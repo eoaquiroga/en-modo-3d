@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>En Modo 3D — Impresión 3D Personalizada</title>
+  <meta name="description" content="Productos de impresión 3D únicos y personalizados. Jarras, mates, figuras, accesorios y más.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar">
+  <a href="#" class="navbar-brand">
+    <div class="brand-icon">⬡</div>
+    <span class="brand-text">En <span>Modo</span> 3D</span>
+  </a>
+
+  <ul class="navbar-nav">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="admin/index.html">Admin</a></li>
+  </ul>
+
+  <div class="navbar-right">
+    <button class="btn-cart" onclick="toggleCart()">
+      🛒 Carrito <span class="cart-count" id="cart-count">0</span>
+    </button>
+    <div id="nav-auth">
+      <button class="btn-auth" onclick="openAuth()">Ingresar</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">✦ Impresión 3D Personalizada</div>
+    <h1>Creamos objetos<br><span>únicos</span> para vos.</h1>
+    <p>Jarras, mates, figuras, decoración y accesorios impresos en 3D con los mejores materiales. Diseños exclusivos o personalizados con tu nombre o logo.</p>
+    <a href="#productos" class="btn-primary">Ver productos</a>
+    <a href="#contacto" class="btn-secondary">Contactanos</a>
+  </div>
+</section>
+
+<!-- ===================== STATS ===================== -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Productos vendidos</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">PLA · PETG · ABS</div>
+    <div class="stat-label">Materiales</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">48hs</div>
+    <div class="stat-label">Tiempo de entrega</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Personalizable</div>
+  </div>
+</div>
+
+<!-- ===================== PRODUCTOS ===================== -->
+<section id="productos" class="section">
+  <div class="section-header">
+    <div class="section-tag">◆ Catálogo</div>
+    <h2>Nuestros Productos</h2>
+    <p>Explorá nuestra colección de productos impresos en 3D</p>
+  </div>
+
+  <div class="categories-grid" id="categories-filter">
+    <button class="cat-btn active" data-cat="todos" onclick="renderProducts('todos')">Todos</button>
+  </div>
+
+  <div id="products-loading" style="text-align:center;padding:3rem;color:var(--text-muted);">
+    Cargando productos...
+  </div>
+
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<!-- ===================== NOSOTROS ===================== -->
+<section id="nosotros" style="background:var(--bg-card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="section" style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+    <div>
+      <div class="section-tag">◆ Quiénes somos</div>
+      <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:1rem;">Impresión 3D <br>con identidad propia.</h2>
+      <p style="color:var(--text-muted); line-height:1.8; margin-bottom:1rem;">En Modo 3D somos un emprendimiento apasionado por la tecnología de fabricación aditiva. Usamos materiales de primera calidad y equipos de última generación.</p>
+      <p style="color:var(--text-muted); line-height:1.8;">Cada pieza es diseñada y producida con atención al detalle, con la posibilidad de personalizar nombre, colores y acabados.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <div style="background:var(--bg-card2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; text-align:center;">
+        <div style="font-size:2.5rem; margin-bottom:0.5rem;">🖨️</div>
+        <div style="font-weight:700; margin-bottom:0.3rem;">Impresoras FDM</div>
+        <div style="color:var(--text-muted); font-size:0.85rem;">Alta precisión 0.1mm</div>
+      </div>
+      <div style="background:var(--bg-card2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; text-align:center;">
+        <div style="font-size:2.5rem; margin-bottom:0.5rem;">🎨</div>
+        <div style="font-weight:700; margin-bottom:0.3rem;">Filamentos</div>
+        <div style="color:var(--text-muted); font-size:0.85rem;">+20 colores disponibles</div>
+      </div>
+      <div style="background:var(--bg-card2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; text-align:center;">
+        <div style="font-size:2.5rem; margin-bottom:0.5rem;">📐</div>
+        <div style="font-weight:700; margin-bottom:0.3rem;">Diseño propio</div>
+        <div style="color:var(--text-muted); font-size:0.85rem;">Modelos exclusivos</div>
+      </div>
+      <div style="background:var(--bg-card2); border:1px solid var(--border); border-radius:var(--radius); padding:1.5rem; text-align:center;">
+        <div style="font-size:2.5rem; margin-bottom:0.5rem;">📦</div>
+        <div style="font-weight:700; margin-bottom:0.3rem;">Envíos</div>
+        <div style="color:var(--text-muted); font-size:0.85rem;">Todo el país</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACTO ===================== -->
+<section id="contacto" class="section" style="max-width:700px;">
+  <div class="section-header">
+    <div class="section-tag">◆ Contacto</div>
+    <h2>¿Tenés un proyecto?</h2>
+    <p>Pedidos mayoristas, diseños personalizados o consultas</p>
+  </div>
+  <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+    <a href="https://wa.me/5491100000000" target="_blank" class="btn-primary">
+      💬 WhatsApp
+    </a>
+    <a href="mailto:info@enmodo3d.com" class="btn-secondary">
+      ✉️ Email
+    </a>
+    <a href="https://instagram.com/enmodo3d" target="_blank" class="btn-secondary">
+      📸 Instagram
+    </a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="navbar-brand" style="display:flex;gap:8px;align-items:center;margin-bottom:0.8rem;">
+        <div class="brand-icon" style="width:32px;height:32px;font-size:16px;">⬡</div>
+        <span class="brand-text" style="font-size:1rem;">En <span>Modo</span> 3D</span>
+      </div>
+      <p>Fabricación aditiva con identidad propia. Diseños únicos y personalizados en PLA, PETG y ABS.</p>
+    </div>
+    <div>
+      <h4>Categorías</h4>
+      <ul>
+        <li><a href="#productos" onclick="renderProducts('Jarras')">Jarras</a></li>
+        <li><a href="#productos" onclick="renderProducts('Mates')">Mates</a></li>
+        <li><a href="#productos" onclick="renderProducts('Vasos')">Vasos</a></li>
+        <li><a href="#productos" onclick="renderProducts('Gaming')">Gaming</a></li>
+        <li><a href="#productos" onclick="renderProducts('Decoración')">Decoración</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#nosotros">Quiénes somos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="admin/index.html">Panel Admin</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 En Modo 3D · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<!-- ===================== CART SIDEBAR ===================== -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <h3>🛒 Tu Carrito</h3>
+    <button class="btn-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty"><div class="empty-icon">🛒</div><p>Tu carrito está vacío</p></div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span id="cart-total-amount">$0</span>
+    </div>
+    <button class="btn-checkout" onclick="openCheckout()">Finalizar pedido →</button>
+  </div>
+</div>
+
+<!-- ===================== AUTH MODAL ===================== -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal">
+    <button class="modal-close-btn" onclick="closeAuth()">✕</button>
+    <h2>En Modo 3D</h2>
+    <p class="modal-sub">Ingresá o creá tu cuenta para comprar</p>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="login" onclick="switchTab('login')">Ingresar</button>
+      <button class="tab-btn" data-tab="register" onclick="switchTab('register')">Registrarse</button>
+    </div>
+
+    <div id="auth-msg"></div>
+
+    <!-- Login -->
+    <form id="form-login" onsubmit="doLogin(event)">
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="tu@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" id="login-pass" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn-submit">Ingresar</button>
+    </form>
+
+    <!-- Register -->
+    <form id="form-register" style="display:none;" onsubmit="doRegister(event)">
+      <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="text" id="reg-name" placeholder="Juan Pérez" required>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="tu@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Teléfono (opcional)</label>
+        <input type="tel" id="reg-phone" placeholder="+54 9 11 0000-0000">
+      </div>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" id="reg-pass" placeholder="Mínimo 6 caracteres" minlength="6" required>
+      </div>
+      <button type="submit" class="btn-submit">Crear cuenta</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== PRODUCT MODAL ===================== -->
+<div class="modal-overlay" id="prod-modal">
+  <div class="modal">
+    <button class="modal-close-btn" onclick="closeProductModal()">✕</button>
+    <div id="prod-modal-content"></div>
+  </div>
+</div>
+
+<!-- ===================== CHECKOUT MODAL ===================== -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal checkout-modal">
+    <button class="modal-close-btn" onclick="closeCheckout()">✕</button>
+    <h2>Finalizar pedido</h2>
+    <p class="modal-sub">Revisá tu pedido y completá los datos</p>
+
+    <div style="background:var(--bg-card2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1.2rem; font-size:0.85rem;">
+      <div style="color:var(--text-muted); margin-bottom:4px;">Cliente</div>
+      <div style="font-weight:700;" id="checkout-user-name"></div>
+      <div style="color:var(--text-muted);" id="checkout-user-email"></div>
+    </div>
+
+    <div style="margin-bottom:1.2rem;">
+      <div style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Productos</div>
+      <div id="checkout-items"></div>
+      <div style="display:flex; justify-content:space-between; padding:8px 0; font-weight:700; font-size:1rem; margin-top:4px;">
+        <span>Total</span>
+        <span style="font-family:'Space Mono',monospace; color:var(--primary);" id="checkout-total"></span>
+      </div>
+    </div>
+
+    <form onsubmit="doCheckout(event)">
+      <div class="form-group">
+        <label>Dirección de entrega</label>
+        <input type="text" id="checkout-address" placeholder="Calle, número, ciudad" required>
+      </div>
+      <div class="form-group">
+        <label>Notas del pedido (opcional)</label>
+        <input type="text" id="checkout-notes" placeholder="Color, personalización, indicaciones...">
+      </div>
+      <button type="submit" class="btn-submit" id="checkout-btn">Confirmar y enviar por WhatsApp →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== TOAST ===================== -->
+<div class="toast" id="toast"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
