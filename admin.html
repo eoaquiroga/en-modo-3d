@@ -16,7 +16,6 @@
 </nav>
 
 <div class="admin-layout">
-  <!-- SIDEBAR -->
   <aside class="admin-sidebar">
     <div style="font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;padding:0 14px;margin-bottom:1rem">Menú</div>
     <ul class="admin-nav">
@@ -28,32 +27,17 @@
     </ul>
   </aside>
 
-  <!-- CONTENT -->
   <main class="admin-content">
-
-    <!-- DASHBOARD -->
     <div id="section-dashboard">
       <div class="admin-header">
         <h1 class="admin-title">Dashboard</h1>
         <span style="font-size:13px;color:var(--text3)" id="dash-date"></span>
       </div>
       <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-label">Productos activos</div>
-          <div class="stat-val" id="stat-products">0</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Pedidos totales</div>
-          <div class="stat-val" id="stat-orders">0</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Usuarios</div>
-          <div class="stat-val" id="stat-users">0</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Ingresos totales</div>
-          <div class="stat-val" id="stat-revenue" style="font-size:1.2rem">$0</div>
-        </div>
+        <div class="stat-card"><div class="stat-label">Productos activos</div><div class="stat-val" id="stat-products">0</div></div>
+        <div class="stat-card"><div class="stat-label">Pedidos totales</div><div class="stat-val" id="stat-orders">0</div></div>
+        <div class="stat-card"><div class="stat-label">Usuarios</div><div class="stat-val" id="stat-users">0</div></div>
+        <div class="stat-card"><div class="stat-label">Ingresos totales</div><div class="stat-val" id="stat-revenue" style="font-size:1.2rem">$0</div></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem">
@@ -71,7 +55,6 @@
       </div>
     </div>
 
-    <!-- PRODUCTS -->
     <div id="section-products" style="display:none">
       <div class="admin-header">
         <h1 class="admin-title">Productos</h1>
@@ -79,17 +62,12 @@
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
         <table class="data-table">
-          <thead>
-            <tr>
-              <th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Estado</th><th>Acciones</th></tr></thead>
           <tbody id="products-table"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- ORDERS -->
     <div id="section-orders" style="display:none">
       <div class="admin-header">
         <h1 class="admin-title">Pedidos</h1>
@@ -97,30 +75,22 @@
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
         <table class="data-table">
-          <thead>
-            <tr><th>ID</th><th>Cliente</th><th>Total</th><th>Pago</th><th>Fecha</th><th>Estado</th><th>Acción</th></tr>
-          </thead>
+          <thead><tr><th>ID</th><th>Cliente</th><th>Total</th><th>Pago</th><th>Fecha</th><th>Estado</th><th>Acción</th></tr></thead>
           <tbody id="orders-table"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- USERS -->
     <div id="section-users" style="display:none">
-      <div class="admin-header">
-        <h1 class="admin-title">Usuarios</h1>
-      </div>
+      <div class="admin-header"><h1 class="admin-title">Usuarios</h1></div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
         <table class="data-table">
-          <thead>
-            <tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Registrado</th></tr>
-          </thead>
+          <thead><tr><th>Nombre</th><th>Email</th><th>Teléfono</th><th>Registrado</th></tr></thead>
           <tbody id="users-table"></tbody>
         </table>
       </div>
     </div>
 
-    <!-- CONFIG -->
     <div id="section-config" style="display:none">
       <div class="admin-header"><h1 class="admin-title">Configuración</h1></div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;max-width:600px">
@@ -134,24 +104,11 @@
           <input type="text" id="cfg-script-url" placeholder="https://script.google.com/macros/s/...">
         </div>
         <button class="btn btn-primary" onclick="saveConfig()">Guardar configuración</button>
-        <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)">
-          <h3 style="font-family:'Space Mono',monospace;color:var(--primary);margin-bottom:1rem">Cómo configurar Google Sheets</h3>
-          <ol style="color:var(--text2);font-size:14px;line-height:2;padding-left:1.5rem">
-            <li>Creá una nueva planilla en Google Sheets</li>
-            <li>Creá 4 hojas: <strong style="color:var(--text)">Productos, Usuarios, Pedidos, Config</strong></li>
-            <li>Andá a Extensiones → Apps Script</li>
-            <li>Pegá el código del archivo <code style="color:var(--primary)">google-apps-script.js</code></li>
-            <li>Desplegá como aplicación web (ejecutar como: yo, acceso: todos)</li>
-            <li>Copiá la URL y pegala arriba</li>
-          </ol>
-        </div>
       </div>
     </div>
-
   </main>
 </div>
 
-<!-- PRODUCT FORM MODAL -->
 <div class="modal-overlay" id="product-form-modal">
   <div class="modal" style="max-width:640px">
     <button class="btn-close" style="position:absolute;top:1rem;right:1rem" onclick="closeProductForm()">✕</button>
@@ -194,10 +151,7 @@
 const SECTIONS = ['dashboard','products','orders','users','config'];
 
 function showSection(name) {
-  SECTIONS.forEach(s => {
-    document.getElementById('section-'+s).style.display = s === name ? 'block' : 'none';
-  });
-  document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
+  SECTIONS.forEach(s => { document.getElementById('section-'+s).style.display = s === name ? 'block' : 'none'; });
   if (name === 'dashboard') loadDashboard();
   if (name === 'products') loadProductsTable();
   if (name === 'orders') loadOrders();
@@ -215,7 +169,6 @@ function loadDashboard() {
   const revenue = orders.reduce((a,o) => a + (o.total||0), 0);
   document.getElementById('stat-revenue').textContent = '$' + revenue.toLocaleString('es-AR');
   document.getElementById('dash-date').textContent = new Date().toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  
   const dashOrders = document.getElementById('dash-orders');
   if (orders.length === 0) {
     dashOrders.innerHTML = '<p style="color:var(--text3);font-size:14px">Sin pedidos aún</p>';
@@ -239,10 +192,7 @@ function loadProductsTable() {
   }
   tbody.innerHTML = products.map(p => `
     <tr>
-      <td><div style="display:flex;align-items:center;gap:10px">
-        <span style="font-size:1.5rem">${p.emoji||'📦'}</span>
-        <strong>${p.name}</strong>
-      </div></td>
+      <td><div style="display:flex;align-items:center;gap:10px"><span style="font-size:1.5rem">${p.emoji||'📦'}</span><strong>${p.name}</strong></div></td>
       <td><span style="font-size:12px;color:var(--primary);font-weight:700">${p.category}</span></td>
       <td style="font-family:'Space Mono',monospace;font-weight:700">$${Number(p.price).toLocaleString('es-AR')}</td>
       <td>${p.stock}</td>
@@ -351,10 +301,8 @@ async function saveProduct() {
   const category = document.getElementById('pf-category').value.trim();
   const price = Number(document.getElementById('pf-price').value);
   if (!name || !category || !price) { Toast.show('Completá nombre, categoría y precio', 'error'); return; }
-  
   const product = {
-    id: id || undefined,
-    name, category, price,
+    id: id || undefined, name, category, price,
     stock: Number(document.getElementById('pf-stock').value)||0,
     description: document.getElementById('pf-desc').value.trim(),
     emoji: document.getElementById('pf-emoji').value.trim()||'📦',
@@ -362,15 +310,8 @@ async function saveProduct() {
     image: document.getElementById('pf-image').value.trim(),
     active: document.getElementById('pf-active').checked,
   };
-
-  if (id) {
-    LocalDB.updateProduct(product);
-    Toast.show('Producto actualizado', 'success');
-  } else {
-    LocalDB.addProduct(product);
-    Toast.show('Producto creado', 'success');
-  }
-  
+  if (id) { LocalDB.updateProduct(product); Toast.show('Producto actualizado', 'success'); }
+  else { LocalDB.addProduct(product); Toast.show('Producto creado', 'success'); }
   App.products = LocalDB.getProducts();
   try { await saveProduct(product); } catch(_) {}
   closeProductForm();
@@ -387,15 +328,11 @@ function deleteProductAdmin(id) {
   loadDashboard();
 }
 
-// Load config from localStorage
 const storedConfig = JSON.parse(localStorage.getItem('em3d_config') || '{}');
 if (storedConfig.sheetId) SHEETS_CONFIG.SHEET_ID = storedConfig.sheetId;
 if (storedConfig.scriptUrl) SHEETS_CONFIG.SCRIPT_URL = storedConfig.scriptUrl;
 
-document.addEventListener('DOMContentLoaded', () => {
-  App.init();
-  loadDashboard();
-});
+document.addEventListener('DOMContentLoaded', () => { App.init(); loadDashboard(); });
 </script>
 </body>
 </html>
